@@ -22,5 +22,4 @@ public class ShortenUrlServiceTest {
 
         assertTrue(destination.equals(requestUrl));
     }
-
 }

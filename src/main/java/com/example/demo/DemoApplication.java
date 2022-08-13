@@ -24,5 +24,4 @@ public class DemoApplication {
 //		단축 URL로 어떤 값을 사용할 것 인가?
 //		나중에 프론트엔드 페이지가 추가된다면 이 API 서버가 그대로 활용될 수 있는가?
 
-// BASE58
 

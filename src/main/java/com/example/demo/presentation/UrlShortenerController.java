@@ -3,6 +3,7 @@ package com.example.demo.presentation;
 import com.example.demo.application.UrlShortenerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class UrlShortenerController {
@@ -21,14 +22,18 @@ public class UrlShortenerController {
     @RequestMapping(path = "/url" ,method = RequestMethod.POST)
     public String create(@RequestBody String destination){
         String shortUrl = urlShortenerService.createUrl(destination);
-        return shortUrl;
+        //ModelAndView view = new ModelAndView("url");
+        //view.addObject("newUrl", shortUrl);
+        return "content/main";
     }
 
     //		- 생성된 단축 URL로 요청시 원래 URL로 리다이렉트
     @RequestMapping(path = "/url/{newUrl}", method = RequestMethod.GET)
-    public String search(@PathVariable(value = "newUrl") String newUrl){
+    public ModelAndView search(@PathVariable(value = "newUrl") String newUrl){
         String destination = urlShortenerService.getDestination(newUrl);
-        return destination;
+        ModelAndView view = new ModelAndView("url");
+        view.addObject("destination", destination);
+        return view;
     }
 
 };

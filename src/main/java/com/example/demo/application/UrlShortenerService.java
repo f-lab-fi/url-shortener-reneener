@@ -22,6 +22,7 @@ public class UrlShortenerService {
     public String createUrl(String destination) { //단축 url 생성
         checkValidation(destination);
         String newUrl =  UUID.randomUUID().toString().substring(0, 7);
+
         int count = 0;
 
         while (count++ < 10) {
@@ -32,6 +33,7 @@ public class UrlShortenerService {
             }
         }
         throw new ManyDuplicationException("요청 횟수 초과");
+
     }
 
     public String getDestination(String newUrl){// 리다이렉트
