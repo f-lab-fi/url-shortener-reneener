@@ -4,12 +4,8 @@ import com.example.demo.domain.ShortenUrl;
 
 import com.example.demo.domain.exception.ManyDuplicationException;
 import com.example.demo.domain.exception.UrlFormatException;
-<<<<<<< HEAD
 import com.example.demo.domain.ShortenUrlRepository;
-=======
 
-import com.example.demo.infrastructure.ShortenUrlRepository;
->>>>>>> 7ab7ad26cda9b460bb5218a01dd7649222b11bdc
 import org.springframework.stereotype.Service;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -55,8 +51,9 @@ public class UrlShortenerService {
     private void checkValidation(String text) {
         Pattern p = Pattern.compile("^((http|https)://)?(www.)?([a-zA-Z0-9]+)\\.[a-z]+([a-zA-Z0-9.?#]+)?");
         Matcher m = p.matcher(text);
-
-        if(Boolean.FALSE == m.matches())
+        System.out.println(text);
+        //if(Boolean.FALSE == m.matches())
+        if(!m.matches())
             throw new UrlFormatException("URL 형식이 맞지 않습니다.");
     }
 
