@@ -49,11 +49,9 @@ public class UrlShortenerService {
     }
 
     private void checkValidation(String text) {
-        Pattern p = Pattern.compile("^((http|https)://)?(www.)?([a-zA-Z0-9]+)\\.[a-z]+([a-zA-Z0-9.?#]+)?");
+        Pattern p = Pattern.compile("^(http|https?):\\/\\/([^:\\/\\s]+)(:([^\\/]*))?((\\/[^\\s/\\/]+)*)?\\/?([^#\\s\\?]*)(\\?([^#\\s]*))?(#(\\w*))?$");
         Matcher m = p.matcher(text);
-        System.out.println(text);
-        //if(Boolean.FALSE == m.matches())
-        if(!m.matches())
+        if(Boolean.FALSE == m.matches())
             throw new UrlFormatException("URL 형식이 맞지 않습니다.");
     }
 
