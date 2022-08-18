@@ -40,7 +40,7 @@ public class UrlShortenerControllerTest {
     @Test
     @DisplayName("기존 url 가져오기")
     public void getUrlTest() throws Exception{
-        given(service.getDestination("abcdefg")).willReturn("http://naver.com");
+        given(service.getDestination("http://localhost.com/abcdefg")).willReturn("http://naver.com");
         mockMvc.perform(MockMvcRequestBuilders.get("/url/{newUrl}","abcdefg"))
                 .andExpect(status().isOk())
                 .andDo(print());

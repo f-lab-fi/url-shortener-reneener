@@ -9,34 +9,35 @@
 <script>
     function createOnClick() {
         let param = $('input[name=url]').val();
-        let object = {destination: param};
+        let destination = {destination: param};
         $.ajax({
             type: 'post',
             url: '/url',
             contentType: 'application/json;charset=utf-8',
-            data: JSON.stringify(object), //문자열로 변환
-            //dataType: 'json', 왜 지워야하지???
+            data: JSON.stringify(destination), //문자열로 변환
             success: function (result) {
-                //$('input[name=url]').attr(value, result); value에 값이 들어가지만 Input태그는 처음 페이지가 로드될떄만 표시됨
-                let newUrl = window.location.protocol+"//"+window.location.host+"/"+result;
+               let newUrl = window.location.protocol+"//"+window.location.host+"/"+result;
                 document.querySelector("#url").value = newUrl;
+
             },
             error: function (msg) {
-                console.log()
                 console.log(msg);
             }
         });
     }
+
     function searchOnClick(){
-        let param = $('input[name=destination]').val();
+        let param = document.querySelector("#destination").value.split("/").reverse()[0];
         $.ajax({
-            type: 'get',//데이터 전송 타입
-            url: '/url',//데이터를 주고받을 파일 주소 입력
+            type: 'get',
+            url: "/search/"+param,
             contentType: 'application/json;charset=utf-8',
-            data: param,
-            dataType: 'text',
-            success: function() {
-               alert("성공");
+            success: function(result) {
+                console.log(result);
+                document.querySelector("#destination").value = result;
+            },
+            error: function (msg) {
+                console.log(msg);
             }
         });
     }
