@@ -30,7 +30,7 @@ public class UrlShortenerService {
             if (notExistedUrl(newUrl)) { //랜덤 문자열 중복 체크
                 ShortenUrl shortenUrl = new ShortenUrl(destination, newUrl);
                 shortenUrlRepository.createShortenUrl(shortenUrl);
-                return newUrl;
+                return "url/"+newUrl;
             }
         }
         throw new ManyDuplicationException("요청 횟수 초과");

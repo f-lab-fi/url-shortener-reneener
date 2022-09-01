@@ -1,7 +1,6 @@
 package com.example.demo.presentation;
 
 import com.example.demo.application.UrlShortenerService;
-import com.example.demo.domain.ShortenUrl;
 import com.example.demo.domain.ShortenUrlDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -24,6 +23,7 @@ public class UrlShortenerController {
         this.urlShortenerService = urlShortenerService;
     }
 
+    // 특정 자원에 대해 생성, 조회(id -> 단축된 문자열)
     //Q. 왜 requestParam 인쓰고 @RequestBody
     //Q. Interface 쓰는 이유
     //Q. Dto를 쓰는 이유
