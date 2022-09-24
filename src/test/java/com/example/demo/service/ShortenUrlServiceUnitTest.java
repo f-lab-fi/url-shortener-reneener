@@ -1,27 +1,17 @@
 package com.example.demo.service;
 
 import com.example.demo.application.UrlShortenerService;
-
-import com.example.demo.domain.ShortenUrl;
 import com.example.demo.domain.exception.ManyDuplicationException;
-<<<<<<< HEAD
 import com.example.demo.domain.exception.UrlFormatException;
 import com.example.demo.domain.ShortenUrlRepository;
 import org.junit.jupiter.api.DisplayName;
-=======
-import com.example.demo.domain.exception.NewUrlNotFoundException;
-import com.example.demo.domain.exception.UrlFormatException;
-import com.example.demo.infrastructure.ShortenUrlRepository;
-import org.junit.jupiter.api.DisplayName;
 
->>>>>>> 7ab7ad26cda9b460bb5218a01dd7649222b11bdc
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
@@ -58,20 +48,6 @@ public class ShortenUrlServiceUnitTest {
         //중복시 예외가 발생함을 테스트
         assertThrows(ManyDuplicationException.class, () -> {
             urlShortenerService.createUrl("https://www.naver.com");
-        });
-    }
-
-    @Test
-    @DisplayName("생성된 단축 url 자릿수가 7자리인지 테스트")
-    void testUrlDigit(){
-        assertTrue(urlShortenerService.createUrl("http://naver.com").length() == 7);
-    }
-
-    @Test
-    @DisplayName("url validation check 예외 발생 테스트")
-    void testUrlFormatRuntimeException(){
-        assertThrows(UrlFormatException.class, () -> {
-           urlShortenerService.createUrl("kkk");
         });
     }
 
