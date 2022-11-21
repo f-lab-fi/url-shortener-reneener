@@ -1,10 +1,11 @@
 package com.example.demo.domain.exception;
 
-public class ManyDuplicationException extends RuntimeException{
-    public ManyDuplicationException(){
+public class ManyDuplicationException extends RuntimeException {
 
-    }
-    public ManyDuplicationException(String message){
-        super(message);
-    }
+	public ManyDuplicationException() {
+	}
+
+	public ManyDuplicationException(String message) {
+		super(message);
+	}
 };

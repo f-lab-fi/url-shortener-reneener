@@ -24,7 +24,6 @@ import static org.mockito.Mockito.when;
 1. 단축 url 생성 횟수 초과 (중복) -> 예외발생
 2. 요청 url 형식 확인 -> 예외발생
 3. getDestination 시 이전에 생성한 url이 없을 경우 -> false 리턴
-4.
 
 */
 
@@ -69,7 +68,6 @@ public class ShortenUrlServiceUnitTest {
     @DisplayName("기존에 저장된 destination이 없는 예외 발생 테스트")
     void testNotexistedShortenUrl(){
         //service만 mock한거지 의존하고 있는 repository에서 확인할 수 없음
-        //Q. 그럼 본래는 Repository에서 NewUrlNotfoundException을 발생시키는데 이걸 service로 옮겨야하는지? (repository는 boolean값을 반환하도록 해서..)
-    }
+   }
 
 };

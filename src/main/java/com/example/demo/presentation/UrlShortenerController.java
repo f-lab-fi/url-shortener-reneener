@@ -2,7 +2,7 @@ package com.example.demo.presentation;
 
 import com.example.demo.application.UrlShortenerService;
 import com.example.demo.domain.ShortenUrlDto;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,31 +10,22 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.HashMap;
 
 @RestController
+@RequiredArgsConstructor
 public class UrlShortenerController {
-    //		다음 요구사항을 만족하는 단축 URL 생성 API 개발
-    //		- 단축 URL 생성 기능
-    //		- 생성된 단축 URL로 요청시 원래 URL로 리다이렉트
-    private UrlShortenerService urlShortenerService;
 
-    public UrlShortenerController(UrlShortenerService urlShortenerService) {
-        this.urlShortenerService = urlShortenerService;
-    }
+    private final UrlShortenerService urlShortenerService;
 
-    // 특정 자원에 대해 생성, 조회(id -> 단축된 문자열)
-    //Q. 왜 requestParam 인쓰고 @RequestBody
-    //Q. Interface 쓰는 이유
-    //Q. Dto를 쓰는 이유
-    @RequestMapping(path = "/url" ,method = RequestMethod.POST)
+    //단축 url 생성
+    @PostMapping("/url")
     public String create(@RequestBody ShortenUrlDto destination){
         String shortUrl = urlShortenerService.createUrl(destination.getDestination());
         return shortUrl;
     }
 
     //생성된 단축 URL로 요청시 원래 URL로 리다이렉트
-    @RequestMapping(path = "/{newUrl}", method = RequestMethod.GET)
+    @GetMapping("/{newUrl}")
     public ResponseEntity<?> redirect(@PathVariable(value = "newUrl") @RequestBody String newUrl) throws URISyntaxException {
         String destination = urlShortenerService.getDestination(newUrl);
         URI redirectUri = new URI(destination);
@@ -44,7 +35,7 @@ public class UrlShortenerController {
     }
 
     //생성된 단축 URL로 원본 URL 찾기
-    @RequestMapping(path = "/search/{newUrl}", method = RequestMethod.GET)
+    @GetMapping("/search/{newUrl}")
     public String search(@PathVariable(value = "newUrl") String newUrl) {
         String destination = urlShortenerService.getDestination(newUrl);
         return destination;

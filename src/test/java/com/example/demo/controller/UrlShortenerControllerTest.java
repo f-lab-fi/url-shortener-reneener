@@ -33,14 +33,14 @@ public class UrlShortenerControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.post("/url")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("http://naver.com")
+                .content("https://naver.com")
         ).andExpect(status().isOk());
     }
 
     @Test
     @DisplayName("기존 url 가져오기")
     public void getUrlTest() throws Exception{
-        given(service.getDestination("http://localhost.com/abcdefg")).willReturn("http://naver.com");
+        given(service.getDestination("http://localhost:8080/abcdefg")).willReturn("http://naver.com");
         mockMvc.perform(MockMvcRequestBuilders.get("/url/{newUrl}","abcdefg"))
                 .andExpect(status().isOk())
                 .andDo(print());

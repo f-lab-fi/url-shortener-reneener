@@ -1,23 +1,23 @@
 package com.example.demo.domain;
 
+import javax.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import java.util.UUID;
+import org.springframework.validation.annotation.Validated;
 
 @Getter
-@Setter
-@ToString
 public class ShortenUrl {
-    private String id;
+    private long id;
+    @NotEmpty
     private String destination;
+    @NotEmpty
     private String newUrl;
     private int cnt;
+    private long sequence = 0L;
 
     @Builder
     public ShortenUrl(String destination, String newUrl){
-        this.id = UUID.randomUUID().toString().replace("-", "");
+        this.id = ++sequence;
         this.destination = destination;
         this.newUrl = newUrl;
         this.cnt = 0;
