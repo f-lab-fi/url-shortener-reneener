@@ -2,17 +2,13 @@ package com.example.demo.service;
 
 import com.example.demo.application.UrlShortenerService;
 
-import com.example.demo.domain.ShortenUrl;
 import com.example.demo.domain.exception.ManyDuplicationException;
 <<<<<<< HEAD
 import com.example.demo.domain.exception.UrlFormatException;
-import com.example.demo.domain.ShortenUrlRepository;
+import com.example.demo.domain.ShortenUrl.ShortenUrlRepository;
 import org.junit.jupiter.api.DisplayName;
 =======
-import com.example.demo.domain.exception.NewUrlNotFoundException;
-import com.example.demo.domain.exception.UrlFormatException;
 import com.example.demo.infrastructure.ShortenUrlRepository;
-import org.junit.jupiter.api.DisplayName;
 
 >>>>>>> 7ab7ad26cda9b460bb5218a01dd7649222b11bdc
 import org.junit.jupiter.api.Test;

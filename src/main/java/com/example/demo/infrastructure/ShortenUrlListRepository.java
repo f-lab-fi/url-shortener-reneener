@@ -1,8 +1,8 @@
 package com.example.demo.infrastructure;
 
-import com.example.demo.domain.ShortenUrlRepository;
+import com.example.demo.domain.ShortenUrl.ShortenUrlRepository;
 import com.example.demo.domain.exception.NewUrlNotFoundException;
-import com.example.demo.domain.ShortenUrl;
+import com.example.demo.domain.ShortenUrl.ShortenUrl;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 

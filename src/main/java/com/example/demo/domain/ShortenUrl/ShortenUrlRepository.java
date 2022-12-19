@@ -1,8 +1,8 @@
-package com.example.demo.domain;
+package com.example.demo.domain.ShortenUrl;
 
 //왜 service를 interface로 만들지 않고 repository를 만드는지
 
-import com.example.demo.domain.ShortenUrl;
+import com.example.demo.domain.ShortenUrl.ShortenUrl;
 
 public interface ShortenUrlRepository {
     void createShortenUrl(ShortenUrl url);
