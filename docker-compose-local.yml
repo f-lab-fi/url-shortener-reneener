@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  url-shortner-project-redis:
+    container_name: url-shortner-project-redis
+    build:
+      dockerfile: Dockerfile
+      context: ./redis
+    image: yooyoun/url-shortner-project-redis
+    ports:
+    - "6379:6379"
+  url-shortner-project-database:
+    container_name: url-shortner-project-database
+    build:
+      dockerfile: Dockerfile
+      context: ./database
+    image: yooyoun/url-shortner-project-database
+    environment:
+      MYSQL_DATABASE: url-shortner
+      MYSQL_ROOT_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+    volumes:
+      - ./database/config:/etc/mysql/conf.d
+    ports:
+      - "3306:3306"
+
+
+
