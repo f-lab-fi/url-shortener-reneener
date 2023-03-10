@@ -1,8 +1,12 @@
 package com.example.demo.infrastructure;
 
+<<<<<<< HEAD
 
+=======
+import com.example.demo.domain.ShortenUrl.ShortenUrlRepository;
+>>>>>>> 7fd170a04dbdd1069cb6922de39625a6874894ca
 import com.example.demo.domain.exception.NewUrlNotFoundException;
-import com.example.demo.domain.ShortenUrl;
+import com.example.demo.domain.ShortenUrl.ShortenUrl;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
@@ -11,13 +15,13 @@ import java.util.List;
 
 // Repository는 데이터를 저장/조회하는 일만 해야함
 
-@Profile("list")
-@Repository
+//@Profile("list")
+//@Repository
 public class ShortenUrlListRepository implements ShortenUrlRepository {
 
     private List<ShortenUrl> urls = new ArrayList<>();
 
-    public void createShortenUrl(ShortenUrl shortenUrl) {
+    public void createUrl(ShortenUrl shortenUrl) {
         urls.add(shortenUrl);
     }
 

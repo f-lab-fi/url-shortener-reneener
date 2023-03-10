@@ -2,26 +2,30 @@ package com.example.demo.service;
 
 import com.example.demo.application.UrlShortenerService;
 
-import com.example.demo.domain.ShortenUrl;
 import com.example.demo.domain.exception.ManyDuplicationException;
+<<<<<<< HEAD
 <<<<<<< HEAD
 import com.example.demo.domain.exception.UrlFormatException;
 import com.example.demo.domain.ShortenUrlRepository;
 import org.junit.jupiter.api.DisplayName;
 =======
 import com.example.demo.domain.exception.NewUrlNotFoundException;
+=======
+>>>>>>> 7fd170a04dbdd1069cb6922de39625a6874894ca
 import com.example.demo.domain.exception.UrlFormatException;
-import com.example.demo.infrastructure.ShortenUrlRepository;
+import com.example.demo.domain.ShortenUrl.ShortenUrlRepository;
 import org.junit.jupiter.api.DisplayName;
+<<<<<<< HEAD
 
 >>>>>>> 7ab7ad26cda9b460bb5218a01dd7649222b11bdc
+=======
+>>>>>>> 7fd170a04dbdd1069cb6922de39625a6874894ca
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
@@ -58,6 +62,7 @@ public class ShortenUrlServiceUnitTest {
         //중복시 예외가 발생함을 테스트
         assertThrows(ManyDuplicationException.class, () -> {
             urlShortenerService.createUrl("https://www.naver.com");
+<<<<<<< HEAD
         });
     }
 
@@ -72,6 +77,8 @@ public class ShortenUrlServiceUnitTest {
     void testUrlFormatRuntimeException(){
         assertThrows(UrlFormatException.class, () -> {
            urlShortenerService.createUrl("kkk");
+=======
+>>>>>>> 7fd170a04dbdd1069cb6922de39625a6874894ca
         });
     }
 
